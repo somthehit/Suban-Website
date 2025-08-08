@@ -1,0 +1,29 @@
+{
+  "name": "suban-wildlife-website",
+  "version": "1.0.0",
+  "description": "Modern wildlife photography website for Suban Chaudhary",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm run build:shared && concurrently \"npm run dev:shared\" \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "npm --workspace=client run dev",
+    "dev:server": "npm --workspace=server run dev",
+    "dev:shared": "npm --workspace=shared run dev",
+    "build": "npm run build:shared && npm --workspace=client run build && npm --workspace=server run build",
+    "build:shared": "npm --workspace=shared run build",
+    "start": "npm --workspace=server run start",
+    "install:all": "npm install && npm --workspace=client install && npm --workspace=server install && npm --workspace=shared install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
